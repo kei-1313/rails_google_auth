@@ -12,13 +12,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  root 'home#index'
 
   # OAuth
-  namespace :oauth do
-    namespace :google_oauth2 do
-      get "callback"
-    end
-  end
+  # namespace :oauth do
+  #   namespace :google_oauth2 do
+  #     get "callback"
+  #   end
+  # end
+
+  get 'oauth/google_oauth2/callback', to: 'sessions#create'
 
   # Users
   resources :users, only: [ :index ]
