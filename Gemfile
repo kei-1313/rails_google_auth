@@ -51,6 +51,15 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
+group :development, :test do
+  gem "pry-rails"
+  gem "factory_bot_rails"
+  gem "rspec-rails", "~> 7.0.0"
+  gem "rubocop", require: false
+  gem "rubocop-rspec"
+  gem "faker"
+end
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"

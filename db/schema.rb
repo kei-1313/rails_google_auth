@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_24_101514) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_02_052016) do
+  create_table "battles", force: :cascade do |t|
+    t.integer "host_user_id", null: false
+    t.string "title", null: false
+    t.datetime "apply_start_date", null: false
+    t.datetime "apply_end_date", null: false
+    t.datetime "battle_start_date", null: false
+    t.datetime "battle_end_date", null: false
+    t.integer "reword"
+    t.text "detail", null: false
+    t.integer "achievement_rate"
+    t.integer "total_hp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["host_user_id"], name: "index_battles_on_host_user_id"
+  end
+
   create_table "user_accounts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "auth_protocol", default: "oauth2"
@@ -34,5 +50,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_24_101514) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "battles", "users", column: "host_user_id"
   add_foreign_key "user_accounts", "users"
 end
